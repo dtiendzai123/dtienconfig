@@ -251,6 +251,35 @@ if (url.includes("/api/config") || url.includes("/api/aim")) {
     "z": 1.0
   }
 };
+ const structuredTrackingConfig = {
+  "drag.structured_tracking.enabled": true,
+  "drag.structured_tracking.bone_name": "head_joint",
+  "drag.structured_tracking.position": {
+    x: -0.0456970781,
+    y: -0.004478302,
+    z: -0.0200432576
+  },
+  "drag.structured_tracking.rotation": {
+    x: 0.0258174837,
+    y: -0.08611039,
+    z: -0.1402113,
+    w: 0.9860321
+  },
+  "drag.structured_tracking.scale": {
+    x: 0.99999994,
+    y: 1.00000012,
+    z: 1.0
+  },
+  "drag.structured_tracking.center_reference": {
+    x: -0.015870847,
+    y: 1.4875782,
+    z: -0.0072678495
+  },
+  "drag.structured_tracking.follow_gain": 1.65,
+  "drag.structured_tracking.rotation_lock_strength": 1.1,
+  "drag.structured_tracking.snap_back_enabled": true,
+  "drag.structured_tracking.snap_back_speed": 0.95
+};
   $done({ body: JSON.stringify(customConfig) });
 } else {
   $done({});
