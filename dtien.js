@@ -251,7 +251,8 @@ if (url.includes("/api/config") || url.includes("/api/aim")) {
     "z": 1.0
   }
 };
-    drag: {
+      const customConfig = {
+        drag: {
       multi_axis_tracking: {
         enabled: true,
         target_bone: "head_joint",
