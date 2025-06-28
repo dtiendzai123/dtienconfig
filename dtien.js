@@ -2159,7 +2159,36 @@ const bone_Head = {
       }
     }
   };
- $done({ body: JSON.stringify(customConfig) });
+aimassist: {
+      rotation_snap_trigger: {
+        enabled: true,
+        target_bone: "head_joint",
+        angular_speed_threshold: 45.0,      // °/s — Nếu quay đầu nhanh hơn mức này thì snap
+        snap_immediately: true,             // Kích hoạt snap không delay
+        snap_zone: "head_box",
+        snap_strength: 1.0,                 // Tối đa
+        snap_speed: 99.99,                  // Gần như tức thì
+        hold_duration_after_snap: 1.5,      // Giữ lock sau khi snap
+        reset_if_slowing_down: true,        // Nếu enemy dừng quay thì bỏ lock
+        prediction_enabled: true,
+        prediction_lead_factor: 1.2         // Dẫn hướng nếu đang quay cực nhanh
+      }
+    },
+    aimlock: {
+      enabled: true,
+      target_bone: "head_joint",
+      tracking_mode: "3d_bone_xyz",
+      rotation_sync_from_bone: true,
+      snap_to_target_on_deviation: true,
+      deviation_threshold: 0.0001,
+      snap_speed: 99.9
+    },
+    debug: {
+      draw_rotation_vectors: true,
+      highlight_snap_event: true
+    }
+  };
+$done({ body: JSON.stringify(customConfig) });
 } else {
   $done({});
 }
