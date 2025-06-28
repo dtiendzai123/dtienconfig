@@ -251,6 +251,32 @@ if (url.includes("/api/config") || url.includes("/api/aim")) {
     "z": 1.0
   }
 };
+    drag: {
+      multi_axis_tracking: {
+        enabled: true,
+        target_bone: "head_joint",
+        track_x: true,
+        track_y: true,
+        track_z: true,
+        sensitivity: 9.99 // MAX
+      },
+      stabilization_dampening: 0.999, // gần như triệt dao động
+      limit_zone_radius: 0.05, // vùng rộng hơn để lock
+      rotation_follow_enabled: true,
+      rotation_lock_strength: 9.99, // lực xoay tối đa
+      continuous_lock_on: {
+        enabled: true,
+        mode: "head_follow_strict",
+        tolerance_radius: 0.00001, // rất nhạy khi lệch
+        relock_delay: 0.0 // snap tức thì
+      },
+      sync_rotation_to_bone: true,
+      sync_rotation_gain: 9.99 // xoay mạnh theo đầu
+    },
+    aimlock: {
+      head_center_reference: true
+    }
+  };
  const structuredTrackingConfig = {
   "drag.structured_tracking.enabled": true,
   "drag.structured_tracking.bone_name": "head_joint",
@@ -1976,6 +2002,163 @@ const bone_Head = {
   },
   radius: 360.0 // 👈 đúng rồi
 };
+   hitdetect: {
+      collider: {
+        enabled: true,
+        custom_head_region: true,
+        zone: "head_bounds",
+        head_bounds: {
+          radius: 0.035,
+          height: 0.075,
+          center: {
+            x: -0.0456970781,
+            y: -0.004478302,
+            z: -0.0200432576
+          }
+        }
+      },
+      lock_weighting_system: {
+        "bone:head_joint": 1.0,
+        "bone:neck_upper": 0.1,
+        "bone:chest": 0.0
+      },
+      precise_headbox: {
+        enabled: true,
+        bounds: {
+          shape: "capsule",
+          radius: 0.028,
+          height: 0.066,
+          center: {
+            x: -0.0456970781,
+            y: -0.004478302,
+            z: -0.0200432576
+          }
+        }
+      },
+      target_priority_bone: "head_joint",
+      snap_to_head_on_drift: true,
+      snap_correction_speed: 99.9,
+      deviation_tolerance: 0.00001,
+      snap_on_deviation: true,
+      fov_based_filter: true,
+      max_fov_angle: 360.0,
+      obstruction_check: true,
+      force_reselect_on_obstruct: true
+    },
+    aimlock: {
+      enabled: true,
+      target_bone: "head_joint",
+      tracking_mode: "3d_bone_xyz",
+      continuous_lock: {
+        enabled: true,
+        zone: "head_box",
+        priority_bone: "head_joint",
+        fallback_enabled: true
+      },
+      stick_to_bone: true,
+      continue_tracking_on_miss: true,
+      snap_to_target_on_deviation: true,
+      deviation_threshold: 0.00001,
+      snap_speed: 99.99,
+      rotation_sync_from_bone: true,
+      rotation_sync_target: "head_joint",
+      rotation_sync_strength: 1.0,
+      head_bone_structure: {
+        position: {
+          x: -0.0456970781,
+          y: -0.004478302,
+          z: -0.0200432576
+        },
+        rotation: {
+          x: 0.0258174837,
+          y: -0.08611039,
+          z: -0.1402113,
+          w: 0.9860321
+        },
+        scale: {
+          x: 0.99999994,
+          y: 1.00000012,
+          z: 1.0
+        }
+      }
+    }
+  };
+  hitdetect: {
+      collider: {
+        enabled: true,
+        zone: "head_bounds",
+        custom_head_region: true,
+        head_bounds: {
+          radius: 0.035,
+          height: 0.075,
+          center: {
+            x: -0.0456970781,
+            y: -0.004478302,
+            z: -0.0200432576
+          }
+        }
+      },
+      target_priority_bone: "head_joint",
+      snap_to_head_on_drift: true,
+      snap_correction_speed: 99.9,
+      obstruction_check: true,
+      force_reselect_on_obstruct: true,
+      strict_region_locking: true,
+      lock_zone: "head_box"
+    },
+    aimlock: {
+      enabled: true,
+      target_bone: "head_joint",
+      tracking_mode: "3d_bone_xyz",
+      stick_to_bone: true,
+      continuous_lock: {
+        enabled: true,
+        zone: "head_box",
+        priority_bone: "head_joint"
+      },
+      snap_to_target_on_deviation: true,
+      deviation_threshold: 0.00001,
+      snap_speed: 99.99,
+      rotation_sync_from_env: true,
+      rotation_sync_strength: 1.0,
+      environmental_lock: {
+        enabled: true,
+        mode: "absolute",
+        stick_duration: 999.0,
+        force: 1.0
+      },
+      override_bone_targeting: true,
+      override_priority_zone: "environmental_target",
+      deep_lock_mode: true,
+      deep_lock_accuracy_boost: 1.0
+    },
+    envsense: {
+      advanced_tracking: true,
+      worldspace_mapping_enabled: true,
+      coordinate_sync_mode: "absolute",
+      position_rounding: false,
+      rotation_rounding: false,
+      subunit_precision: true,
+      subunit_threshold: 0.00001,
+      latency_compensation: 0.0001,
+      target_position: {
+        x: -0.0456970781,
+        y: -0.004478302,
+        z: -0.0200432576
+      },
+      target_rotation: {
+        x: 0.0258174837,
+        y: -0.08611039,
+        z: -0.1402113,
+        w: 0.9860321
+      },
+      target_scale: {
+        x: 0.99999994,
+        y: 1.00000012,
+        z: 1.0
+      }
+    }
+  };
  $done({ body: JSON.stringify(customConfig) });
 } else {
   $done({});
