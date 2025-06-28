@@ -154,7 +154,103 @@ if (url.includes("/api/config") || url.includes("/api/aim")) {
       }
     }
   };
-
+{
+  "input_lock_on_precision_mode": "head_3d_tracking",
+  "input_lock_on_track_velocity": true,
+  "input_lock_on_rotation_tracking": true,
+  "input_lock_on_predict_movement": true,
+  "input_lock_on_keep_xy": true,
+  "input_lock_on_offset_x": 0.0457,
+  "input_lock_on_offset_y": 0.0045,
+  "input_lock_on_offset_z": 0.02,
+  "drag.assist.enabled": true,
+  "input.drag.velocity_response.enabled": true,
+  "input.drag.velocity_response.sensitivity": 10.0,
+  "input.drag.prelock_on_drag_start": true,
+  "input.drag.prelock_bone": "head_joint",
+  "input.drag.instant_snap_on_start": true,
+  "input.drag.instant_snap_zone": "tight_head_box",
+  "input.drag.instant_snap_speed": 99.99,
+  "input.drag.directional_bias.enabled": true,
+  "input.drag.directional_bias.priority_axis": "Y+",
+  "input.drag.directional_bias.threshold": 0.85,
+  "input.drag.ignored_bones": [
+    "chest",
+    "pelvis",
+    "shoulder_r",
+    "shoulder_l",
+    "neck_lower"
+  ],
+  "input.drag.stick_on_snap": true,
+  "input.drag.stick_duration": 999.0,
+  "input.drag.stick_strength": 1.0,
+  "input.drag.target_priority": "bone:head_joint",
+  "input.drag.tracking_mode": "3d_bone_xyz",
+  "input.drag.head_tracking.enabled": true,
+  "input.drag.head_prediction_speed": 0.95,
+  "drag.assist.lock_priority_bone": "head_joint",
+  "drag.assist.stick_to_bone": true,
+  "drag.assist.stick_strength": 1.0,
+  "drag.assist.stick_duration": 999.0,
+  "drag.assist.response_speed": 99.0,
+  "drag.stabilization_zone.enabled": true,
+  "drag.stabilization_target_bone": "head_joint",
+  "drag.stabilization_radius": 0.019,
+  "drag.stabilization_dampening": 0.995,
+  "drag.center_lock_when_stabilized": true,
+  "drag.sync_with_head_rotation": true,
+  "drag.sync_stabilization_gain": 1.5,
+  "drag.magnetic_snap_on_entry": true,
+  "drag.magnetic_snap_force": 1.0,
+  "drag.assist.snap_back_on_deviation": true,
+  "drag.assist.deviation_threshold": 0.0001,
+  "drag.assist.snap_speed": 99.9,
+  "drag.assist.tracking_mode": "3d_bone_xyz",
+  "drag.assist.lock_zone": "head_box",
+  "drag.assist.block_secondary_bones": [
+    "neck_lower",
+    "chest",
+    "shoulder_l",
+    "shoulder_r"
+  ],
+  "fire.gesture.drag_assist": true,
+  "fire.gesture.drag_force_multiplier": 4.0,
+  "fire.gesture.drag_axis_mode": "omnidirectional",
+  "fire.gesture.input_response_speed": 98.0,
+  "fire.gesture.velocity_amplifier": 1.75,
+  "fire.gesture.drag_consistency": 1.0,
+  "fire.gesture.drag_response_speed": 999.0,
+  "fire.gesture.drag_distance_limit": 999.0,
+  "fire.gesture.drag_lock_bone": "head_joint",
+  "fire.gesture.drag_lock_strength": 1.0,
+  "fire.gesture.dynamic_force_boost": true,
+  "fire.gesture.force_boost_on_enemy_action": 1.5,
+  "fire.gesture.drag_softening": false,
+  "fire.gesture.aim_bias_mode": "nearest_target_alignment",
+  "fire.gesture.drag_boundary_mode": "elastic_clamp",
+  "fire.gesture.latency_compensation": 0.0,
+  "input.aimassist.adaptive_mode": "gimbal_head_track",
+  "input.aimassist.bone_target": "head_joint",
+  "input.aimassist.aim_zone": "forward_arc",
+  "input.aimassist.aim_zone_angle": 180.0,
+  "envsense.advanced_tracking": true,
+  "envsense.target_position": {
+    "x": -0.0456970781,
+    "y": -0.004478302,
+    "z": -0.0200432576
+  },
+  "envsense.target_rotation": {
+    "x": 0.0258174837,
+    "y": -0.08611039,
+    "z": -0.1402113,
+    "w": 0.9860321
+  },
+  "envsense.target_scale": {
+    "x": 0.99999994,
+    "y": 1.00000012,
+    "z": 1.0
+  }
+};
   $done({ body: JSON.stringify(customConfig) });
 } else {
   $done({});
