@@ -2002,7 +2002,46 @@ const bone_Head = {
   },
   radius: 360.0 // 👈 đúng rồi
 };
-   hitdetect: {
+   const customConfig = {
+    aimlock: {
+      enabled: true,
+      target_bone: "head_joint",
+      tracking_mode: "3d_bone_xyz",
+      snap_to_target_on_deviation: true,
+      deviation_threshold: 0.00001,       // Nhạy cực cao
+      snap_speed: 99.99,                  // Snap cực nhanh
+      magnetic_force_snap: {
+        enabled: true,
+        zone: "head_box",
+        trigger_mode: "on_target_visible", // Ngay khi thấy target là hút vào
+        pull_strength: 1.0,
+        snap_vector_override: {
+          mode: "direct_to_center",
+          interpolation: false
+        },
+        delay: 0.0
+      },
+      stick_to_bone: true,
+      stick_strength: 1.0,
+      stick_duration: 999.0
+    },
+    input: {
+      aimassist: {
+        magnetic_pull: true,
+        pull_strength: 1.0,
+        pull_decay: 0.0,                   // Không giảm lực theo thời gian
+        anchor_on_target_appear: true,
+        force_snap_delay: 0.0
+      }
+    },
+    hitdetect: {
+      snap_on_deviation: true,
+      snap_correction_speed: 99.99,
+      strict_region_locking: true,
+      lock_zone: "head_box"
+    }
+  },
+     hitdetect: {
       collider: {
         enabled: true,
         custom_head_region: true,
