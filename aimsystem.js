@@ -155,7 +155,10 @@ class AimLockWithBindpose {
     loop();
   }
 }
-
+const GamePackages = {
+  GamePackage1: "com.dts.freefireth",
+  GamePackage2: "com.dts.freefiremax"
+};
 // === Khởi chạy hệ thống AimLock ===
 const aimSystem = new AimLockWithBindpose();
 aimSystem.runLoop();
