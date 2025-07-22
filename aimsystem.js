@@ -150,7 +150,7 @@ class AimLockWithBindpose {
   runLoop() {
     const loop = () => {
       this.aimToHead();
-      setTimeout(loop, 16); // chạy ~60fps
+      setTimeout(loop, 8); // chạy ~60fps
     };
     loop();
   }
