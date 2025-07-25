@@ -135,8 +135,8 @@ function AdvancedAimLockSystem(config){
     targetFPS: config.targetFPS||1000,
     smoothing: config.smoothing||0,
     predictionTime: config.predictionTime||0,
-    maxDistance: config.maxDistance||150,
-    aimOffset: config.aimOffset||new Vector3(0,0.05,0),
+    maxDistance: config.maxDistance||9999,
+    aimOffset: config.aimOffset||new Vector3( -0.04089227, 0.00907892,0.02748467),
     adaptiveSmoothing: !!config.adaptiveSmoothing,
     autoAdjustFilters: !!config.autoAdjustFilters,
     instantMode: !!config.instantMode
@@ -363,8 +363,8 @@ var aimConfig = {
   targetFPS:1000,
   smoothing:0,
   predictionTime:0,
-  maxDistance:999,
-  aimOffset:new Vector3(0,0.05,0),
+  maxDistance:9999,
+  aimOffset:new Vector3( -0.04089227, 0.00907892,0.02748467),
   adaptiveSmoothing:false,
   autoAdjustFilters:false,
   instantMode:true
