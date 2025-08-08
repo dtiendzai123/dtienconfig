@@ -1,3 +1,7 @@
+let body = $response.body;
+
+// Nếu là JSON thì parse thử
+try { body = JSON.parse($response.body); } catch (e) {}
 // === Vector3 ES5 ===
 function Vector3(x, y, z) {
   this.x = x || 0;
@@ -378,3 +382,8 @@ setInterval(function(){
   var st = advancedAimSystem.getStatus();
   if(st.active && typeof console!="undefined") console.log("📊 System Status:", st);
 }, 5000);
+if (typeof body === "object") {
+  $done({ body: JSON.stringify(body) });
+} else {
+  $done({ body });
+}
